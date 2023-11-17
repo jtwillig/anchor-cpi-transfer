@@ -3,14 +3,14 @@ seeds = false
 skip-lint = false
 
 [programs.devnet]
-cpi_transfer = "CpePG7eTwd6gq4eAfnJg3DeXBaw8HASypWgZmK1zAuJ3"
+cpi_transfer = "7MC15wg6gUMKnzAHb9UA1q2CWBiqKtbFGdLHZxLcdXy5"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "devnet"
-wallet = "/Users/emrekeskin/.config/solana/id.json"
+wallet = "/Users/jereme/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

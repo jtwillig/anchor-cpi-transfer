@@ -1,5 +1,5 @@
-import * as anchor from "@project-serum/anchor";
-import { Program } from "@project-serum/anchor";
+import * as anchor from "@coral-xyz/anchor";
+import { Program } from "@coral-xyz/anchor";
 import { Keypair, Transaction, SystemProgram } from "@solana/web3.js";
 import {
     Token,
@@ -143,6 +143,26 @@ describe("token-cpi", () => {
             "receiver token balance: ",
             await program.provider.connection.getTokenAccountBalance(
                 receiver_token.publicKey
+            )
+        );
+    });
+
+    //Actual Burn
+    it("burn", async () => {
+        await program.methods
+            .burn(new anchor.BN(1e6))
+            .accounts({
+                sender: program.provider.publicKey,
+                senderToken: sender_token.publicKey,
+                mint: mint.publicKey,
+                tokenProgram: TOKEN_PROGRAM_ID,
+            })
+            .rpc();
+
+        console.log(
+            "sender token balance: ",
+            await program.provider.connection.getTokenAccountBalance(
+                sender_token.publicKey
             )
         );
     });
